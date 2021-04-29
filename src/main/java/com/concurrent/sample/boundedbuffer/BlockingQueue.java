@@ -22,7 +22,7 @@ public class BlockingQueue {
                 try {
                     wait();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+
                 }
             }
 
@@ -43,7 +43,7 @@ public class BlockingQueue {
                 try {
                     wait();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+
                 }
             }
 

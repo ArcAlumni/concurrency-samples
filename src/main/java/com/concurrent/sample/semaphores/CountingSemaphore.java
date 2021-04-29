@@ -11,12 +11,12 @@ public class CountingSemaphore {
 
     public synchronized void acquire() {
 
-        try {
-            while (allowedPermits == maxPermits) {
+        while (allowedPermits == maxPermits) {
+            try {
                 wait();
+            } catch (InterruptedException e) {
+
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
 
         allowedPermits++;
@@ -26,12 +26,12 @@ public class CountingSemaphore {
 
     public synchronized void release() {
 
-        try {
-            while (allowedPermits == 0) {
+        while (allowedPermits == 0) {
+            try {
                 wait();
+            } catch (InterruptedException e) {
+
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
 
         allowedPermits--;
