@@ -1,12 +1,15 @@
 package com.concurrent.sample.unisexBathroom;
 
-public class UnisexBathroom {
+import java.util.concurrent.Semaphore;
+
+public class UnisexBathroomLimited {
 
     private static final String NONE = "none";
     private static final String MEN = "men";
     private static final String WOMEN = "women";
 
     private String inUse = NONE;
+    private Semaphore semaphore = new Semaphore(2);
 
     private int peopleUsing = 0;
 
@@ -29,10 +32,12 @@ public class UnisexBathroom {
 
             inUse = MEN;
             peopleUsing++;
+            semaphore.acquire();
 
         }
 
         useBathroom();
+        semaphore.release();
 
         synchronized (this) {
 
@@ -58,10 +63,12 @@ public class UnisexBathroom {
 
             inUse = WOMEN;
             peopleUsing++;
+            semaphore.acquire();
 
         }
 
         useBathroom();
+        semaphore.release();
 
         synchronized (this) {
 

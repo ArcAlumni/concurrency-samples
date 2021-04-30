@@ -4,26 +4,46 @@ public class UnisexBathroomDriver {
 
     public static void main(String[] args) throws InterruptedException {
 
-        UnisexBathroom bathroom = new UnisexBathroom();
+        UnisexBathroomLimited bathroom = new UnisexBathroomLimited();
 
         Thread female1 = new Thread(() -> {
-            bathroom.womenUse();
+            try {
+                bathroom.womenUse();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }, "female1");
 
         Thread female2 = new Thread(() -> {
-            bathroom.womenUse();
+            try {
+                bathroom.womenUse();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }, "female2");
 
         Thread male1 = new Thread(() -> {
-            bathroom.menUse();
+            try {
+                bathroom.menUse();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }, "male1");
 
         Thread male2 = new Thread(() -> {
-            bathroom.menUse();
+            try {
+                bathroom.menUse();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }, "male2");
 
         Thread male3 = new Thread(() -> {
-            bathroom.menUse();
+            try {
+                bathroom.menUse();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }, "male3");
 
         female1.start();
