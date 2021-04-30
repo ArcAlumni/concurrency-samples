@@ -1,13 +1,15 @@
 package com.concurrent.sample;
 
-import org.springframework.boot.SpringApplication;
+import java.util.concurrent.locks.ReentrantLock;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SampleApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SampleApplication.class, args);
+		ReentrantLock lock = new ReentrantLock();
+		lock.lock();
 	}
 
 }
